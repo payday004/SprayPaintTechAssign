@@ -1,0 +1,182 @@
+﻿<Window x:Class="SprayPaintTechAssign.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SprayPaintTechAssign"
+        mc:Ignorable="d"
+        MinHeight="460"
+        MinWidth="620"
+        Title="Spray Paint" Height="450" Width="620"
+        Background="#1C204C">
+
+
+
+    <Grid>
+        
+        <!-- FILE MENU DOCK ON TOP -->
+        <DockPanel Grid.Column="0" 
+                   Grid.ColumnSpan="3" >
+            
+            <Menu DockPanel.Dock="Top" 
+                  Background="#C5CBFF">
+
+                <MenuItem Header="_File">
+
+                    <MenuItem Header="_Open" 
+                              Click="MenuItem_Open"/>
+                    <MenuItem Header="_Save"
+                              Click="MenuItem_Save"/>
+                    <MenuItem Header="_Load Ink" 
+                              Click="LoadInk_Click"/>
+                    <MenuItem Header="_Save Ink"
+                              Click="SaveInk_Click"/>
+
+                </MenuItem>
+
+            </Menu>
+            
+        </DockPanel>
+        
+        
+        
+        <!-- BAR ON THE RIGHT SIDE -->
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="2"
+                    Background="#C5CBFF">
+
+            <!-- erase buttons -->
+            <Button x:Name="Eraser" 
+                    Margin="2"
+                    Background="#696E98" 
+                    BorderBrush="#1C204C"
+                    Click="Eraser_Click">
+                Eraser
+            </Button>
+            <Button x:Name="Clear" 
+                    Margin="2"
+                    Background="#696E98" 
+                    BorderBrush="#1C204C"
+                    Click="Clear_Click">
+                Clear
+            </Button>
+
+            
+            <!-- color buttons -->
+            <Button x:Name="Red" 
+                    Margin="2"
+                    Background="#FF5D5D" 
+                    BorderBrush="#7F3131"
+                    Click="Color_Click">
+                Red
+            </Button>
+            <Button x:Name="Green" 
+                    Margin="2"
+                    Background="#5DFF8F" 
+                    BorderBrush="#215932"
+                    Click="Color_Click">
+                Green
+            </Button>
+            <Button x:Name="Blue" 
+                    Margin="2"
+                    Background="#5B62FF" 
+                    BorderBrush="#212459"
+                    Click="Color_Click">
+                Blue
+            </Button>
+            <Button x:Name="Black" 
+                    Margin="2"
+                    Background="#4D4D4D" 
+                    BorderBrush="#000000"
+                    Click="Color_Click">
+                Black
+            </Button>
+            <Button x:Name="White" 
+                    Margin="2"
+                    Background="#FFFFFF" 
+                    BorderBrush="#BABABA"
+                    Click="Color_Click">
+                White
+            </Button>
+
+
+            <!-- width -->
+            <TextBlock HorizontalAlignment="Center"
+                       Name="wText">
+                Width: 5
+            </TextBlock>
+            <Button x:Name="WidthPlus" 
+                    Margin="2"
+                    Background="#696E98" 
+                    BorderBrush="#1C204C"
+                    Click="WidthPlus_Click">
+                +
+            </Button>
+            <Button x:Name="WidthMinus" 
+                    Margin="2"
+                    Background="#696E98" 
+                    BorderBrush="#1C204C"
+                    Click="WidthMinus_Click">
+                -
+            </Button>
+
+
+            <!-- opacity -->
+            <TextBlock HorizontalAlignment="Center"
+                       Name="oText">
+                Opacity: 1
+            </TextBlock>
+            <Button x:Name="OpacityPlus" 
+                    Margin="2"
+                    Background="#696E98" 
+                    BorderBrush="#1C204C"
+                    Click="OpacityPlus_Click">
+                +
+            </Button>
+            <Button x:Name="OpacityMinus" 
+                    Margin="2"
+                    Background="#696E98" 
+                    BorderBrush="#1C204C"
+                    Click="OpacityMinus_Click">
+                -
+            </Button>
+
+
+        </StackPanel>
+        
+
+        
+        <!-- MAIN INK CANVAS -->
+        <Canvas x:Name="editCanvas"
+                ClipToBounds="True"
+                Grid.Column="0"
+                Grid.Row="1"
+                Margin="5" >
+
+            <local:CustomRenderingInkCanvas x:Name="inkCanvas"
+                                            Background="Transparent">
+                <Image x:Name="ink_image"/>
+                
+            </local:CustomRenderingInkCanvas>
+            
+        </Canvas>
+
+
+
+        <!-- GRID DEFINITIONS -->
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100"/>
+
+        </Grid.ColumnDefinitions>
+
+    </Grid>
+</Window>
